@@ -37,3 +37,10 @@ out
 *.ipr
 *.idea
 
+#VSXCode
+*.code-workspace
+/target/
+*.classpath
+*/.project
+*/.settings/
+
