@@ -5,7 +5,7 @@ import com.google.common.base.Splitter;
 /**
  *
  * To start the application:
- * ./gradlew
+ * ./gradlew clean build
  * java -jar ./hw01-gradle/build/libs/gradleHelloWorld-0.1.jar
  *
  */
