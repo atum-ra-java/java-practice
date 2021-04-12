@@ -9,4 +9,4 @@
 
 ---
 
-### HW-01. Gradle.
+### HW-02. Data structures.
