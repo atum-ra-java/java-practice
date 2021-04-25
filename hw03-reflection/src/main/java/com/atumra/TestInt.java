@@ -12,11 +12,17 @@ public class TestInt {
     int y;
 
     @Before
-    public void initVariable() {
-        x = 100;
+    public void initVariable() throws Exception {
+        try {
+            x = 100;
+    //        throw new Exception("before");
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("before");
+        }
     }
 
-    @Test
+    @Test 
     public void integerXEquals0() throws Exception {
         compareInt(x, 100);
     }

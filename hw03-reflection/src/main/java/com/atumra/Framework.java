@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.atumra.annotation.Test;
+import com.google.common.base.Optional;
 import com.atumra.annotation.Before;
 import com.atumra.annotation.After;
 
@@ -57,13 +58,21 @@ public class Framework {
         for (List<Method> testListWithBeforeAfter : fullList) {
             try {
                 final Object testObj = test.getConstructor().newInstance();
-                for (Method method : testListWithBeforeAfter) {
+                for(int i = 0; i < testListWithBeforeAfter.size(); i++)  {
+                   
+                // for (Method method : testListWithBeforeAfter) {
+                    var method = testListWithBeforeAfter.get(i);
                     try {
                         method.invoke(testObj);
                     } catch (InvocationTargetException e) {
-                        String ext = e.getCause().getMessage();
+     
+                        // так не работает c моим компилятором graalvm-ce-java11-20.0.0 
+                        // а по докам должно вроде
+                        // String ext = Optional.of(e.getCause().getMessage()).or("0");
+                       String ext=  e.getCause().getMessage();
+                       if (ext == null) ext = "0";
 
-                        switch (ext) {
+                       switch (ext) {
                             case "correct": 
                                 System.out.println("Test '" + method.getName() + "': PASS");
                                 passedTests++;
@@ -72,8 +81,13 @@ public class Framework {
                                 System.out.println("Test '" + method.getName() + "': DOESN'T PASS");
                                 failedTests++;
                                 break;
+                            case "before":
+                                System.out.println("Method with annotation before RIP");
+                                method = testListWithBeforeAfter.get(i = testListWithBeforeAfter.size() - 1);
+                                method.invoke(testObj);
+                                break;
                             default:
-                                System.out.println("Test '" + method.getName() + "': execution error - " + e.getCause());
+                                System.out.println("Test '" + method.getName() + "': execution error");
                                 failedTests++;
                                 break;
                         }
@@ -82,9 +96,10 @@ public class Framework {
                     }
                 }
             }
-            catch (ReflectiveOperationException e) {
+            catch (Exception e) {
                 e.printStackTrace();
             }
+            
         }
         printStat();
     }
@@ -108,7 +123,7 @@ public class Framework {
      */
     private static void printStat() {
         System.out.println();
-        System.out.println("Total performed tests: " + (passedTests + failedTests));
+        System.out.println("Total performed " + (passedTests + failedTests));
         System.out.println("Tests passed: " + passedTests);
         System.out.println("Tests failed: " + failedTests);
         passedTests = 0;
