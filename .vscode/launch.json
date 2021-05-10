@@ -1,0 +1,12 @@
+{
+  "configurations": [
+  
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - Launch",
+      "request": "launch",
+      "mainClass": "com.atumra.Launch",
+      "projectName": "hw05-proxy"
+    }
+  ]
+}
