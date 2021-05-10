@@ -1,36 +1,37 @@
 
 // gradle hw02-generics:check -i
 
-plugins {
-    id 'java'
-}
+// plugins {
+//     //id 'java'
+//     id 'java-library'
+// }
 
-sourceCompatibility = 11
-targetCompatibility = 11
+// sourceCompatibility = 11
+// targetCompatibility = 11
 
-dependencies {
-    testImplementation ('org.junit.jupiter:junit-jupiter-api')
-    testImplementation ('org.junit.jupiter:junit-jupiter-engine')
-    testImplementation ('org.assertj:assertj-core')
-    testImplementation ('org.mockito:mockito-core')
-    testImplementation ('org.mockito:mockito-junit-jupiter')
-}
+// dependencies {
+//     testImplementation ('org.junit.jupiter:junit-jupiter-api')
+//     testImplementation ('org.junit.jupiter:junit-jupiter-engine')
+//     testImplementation ('org.assertj:assertj-core')
+//     testImplementation ('org.mockito:mockito-core')
+//     testImplementation ('org.mockito:mockito-junit-jupiter')
+// }
 
-sourceSets.main.java.srcDirs = ['src/main/java']
+// sourceSets.main.java.srcDirs = ['src/main/java']
 
-test {
-    useJUnitPlatform()
+// test {
+//     useJUnitPlatform()
 
-    testLogging {
-       // showStandardStreams = true
-        events "passed", "skipped", "failed"
-    }
-}
+//     testLogging {
+//        // showStandardStreams = true
+//         events "passed", "skipped", "failed"
+//     }
+// }
 
-tasks.withType(JavaCompile) {
-    options.with {
-        encoding = 'UTF-8'
-    }
-}
+// tasks.withType(JavaCompile) {
+//     options.with {
+//         encoding = 'UTF-8'
+//     }
+// }
 
 
