@@ -7,7 +7,6 @@ public interface CalculatorLogging {
   
   public void calculate(int param1, int param2);
 
-  @Log
   public void calculate(int param1, int param2, String param3);
 
 }
