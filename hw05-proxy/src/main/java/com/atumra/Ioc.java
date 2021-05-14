@@ -4,8 +4,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
+
 
 public class Ioc {
 
@@ -24,21 +25,23 @@ public class Ioc {
 
   static class CalculatorInvocationHandler implements InvocationHandler {
       private final CalculatorLogging myClass;
-      private List<Method> annotatedMethods = Arrays.stream(CalculatorLogging.class.getMethods())
-        .filter(method -> method.isAnnotationPresent(Log.class))
-        .collect(Collectors.toList());
-      // CalculatorInvocationHandler(CalculatorLogging myClass) {
-      //     this.myClass = myClass;
-      // }
+      private Set<Integer> annotatedParamCounts;
 
-      CalculatorInvocationHandler(CalculatorLogging myClass) {
+      CalculatorInvocationHandler(CalculatorLogging myClass) throws IllegalArgumentException {
         this.myClass = myClass;
+        Class<?> cl= myClass.getClass();
+
+        annotatedParamCounts = Arrays.stream(cl.getMethods())
+        .filter(method -> method.isAnnotationPresent(Log.class))
+        .map(method -> method.getParameterCount())
+        .collect(Collectors.toSet());
       }
 
       // В консоли дожно быть: executed method: calculation, param: 6
       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // System.out.println(method + " annotation" + method.isAnnotationPresent(Log.class));
-          if (annotatedMethods.contains(method) ) 
+        
+          if (annotatedParamCounts.contains(method.getParameterCount()) ) 
           System.out.println("executed method:" + method.getName() + ", param: " + Arrays.toString(args));
           return method.invoke(myClass, args);
       }
