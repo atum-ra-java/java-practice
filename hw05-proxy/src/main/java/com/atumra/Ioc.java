@@ -33,7 +33,7 @@ public class Ioc {
 
         annotatedParamCounts = Arrays.stream(cl.getMethods())
         .filter(method -> method.isAnnotationPresent(Log.class))
-        .map(method -> String.valueOf(method.getParameterCount())+method.getName())
+        .map(method -> String.valueOf(method.getParameterCount())+method.getName()+ Arrays.toString(method.getParameterTypes()))
         .collect(Collectors.toSet());
       }
 
@@ -41,7 +41,7 @@ public class Ioc {
       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // System.out.println(method + " annotation" + method.isAnnotationPresent(Log.class));
         
-          if (annotatedParamCounts.contains(String.valueOf(method.getParameterCount())+method.getName()) ) 
+          if (annotatedParamCounts.contains(String.valueOf(method.getParameterCount())+method.getName()+Arrays.toString(method.getParameterTypes())) ) 
           System.out.println("executed method:" + method.getName() + ", param: " + Arrays.toString(args));
           return method.invoke(myClass, args);
       }
