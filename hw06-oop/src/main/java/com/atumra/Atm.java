@@ -24,14 +24,13 @@ public class Atm implements AtmBalanceService {
 
   public Map<Integer,Integer> giveBanknotes(int sum) throws Exception {
     Map<Integer,Integer>  result = new HashMap<>();
-    
+
     if (sum <= getAtmBalance()) {
       result = getSumWithLargestBanknote(sum, banknotesStack);
       if (result.size() == 0) throw new Exception("we have not banknote for such values");
     } else throw new Exception("you have no enough money");
     setAtmBalance(getAtmBalance()-sum);
     return result;
-  
   };
 
 

@@ -1,49 +1,49 @@
-plugins {
-    // Apply the java plugin to add support for Java
-        //id 'java'
-    id 'java-library'
-    id 'com.github.johnrengelman.shadow'
-    id "io.freefair.lombok" version "6.0.0-m2"
-}
+// plugins {
+//     // Apply the java plugin to add support for Java
+//         //id 'java'
+//     id 'java-library'
+//     id 'com.github.johnrengelman.shadow'
+//     id "io.freefair.lombok" version "6.0.0-m2"
+// }
 
-sourceCompatibility = 11
-targetCompatibility = 11
+// sourceCompatibility = 11
+// targetCompatibility = 11
 
-dependencies {
-    testImplementation ('org.junit.jupiter:junit-jupiter-api')
-    testImplementation ('org.junit.jupiter:junit-jupiter-engine')
-    testImplementation ('org.assertj:assertj-core')
-    testImplementation ('org.mockito:mockito-core')
-    testImplementation ('org.mockito:mockito-junit-jupiter')
-}
+// dependencies {
+//     testImplementation ('org.junit.jupiter:junit-jupiter-api')
+//     testImplementation ('org.junit.jupiter:junit-jupiter-engine')
+//     testImplementation ('org.assertj:assertj-core')
+//     testImplementation ('org.mockito:mockito-core')
+//     testImplementation ('org.mockito:mockito-junit-jupiter')
+// }
+
+// // sourceSets.main.java.srcDirs = ['src/main/java']
+
+// test {
+//     useJUnitPlatform()
+
+//     testLogging {
+//        showStandardStreams = true
+//     events "passed", "skipped", "failed"
+//     }
+// }
+
 
 // sourceSets.main.java.srcDirs = ['src/main/java']
 
-test {
-    useJUnitPlatform()
+// shadowJar {
+//     archiveBaseName.set('hw06Oop')
+//     archiveVersion.set('0.1')
+//     archiveClassifier.set('')
+//     manifest {
+//         attributes 'Main-Class': 'com.atumra.Launch'
+//     }
+// }
 
-    testLogging {
-       showStandardStreams = true
-    events "passed", "skipped", "failed"
-    }
-}
+// tasks.build.dependsOn tasks.shadowJar
 
-
-sourceSets.main.java.srcDirs = ['src/main/java']
-
-shadowJar {
-    archiveBaseName.set('hw06Oop')
-    archiveVersion.set('0.1')
-    archiveClassifier.set('')
-    manifest {
-        attributes 'Main-Class': 'com.atumra.Launch'
-    }
-}
-
-tasks.build.dependsOn tasks.shadowJar
-
-tasks.withType(JavaCompile) {
-    options.with {
-        encoding = 'UTF-8'
-    }
-}
+// tasks.withType(JavaCompile) {
+//     options.with {
+//         encoding = 'UTF-8'
+//     }
+// }
