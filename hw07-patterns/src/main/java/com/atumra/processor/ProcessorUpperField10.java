@@ -1,6 +1,6 @@
-package ru.otus.processor;
+package com.atumra.processor;
 
-import ru.otus.model.Message;
+import com.atumra.model.Message;
 
 public class ProcessorUpperField10 implements Processor {
 
@@ -8,4 +8,5 @@ public class ProcessorUpperField10 implements Processor {
     public Message process(Message message) {
         return message.toBuilder().field4(message.getField10().toUpperCase()).build();
     }
+
 }

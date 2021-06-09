@@ -1,4 +1,4 @@
-package com.atumra.processor;
+package com.atumra.processor.homework;
 
 import com.atumra.model.Message;
 

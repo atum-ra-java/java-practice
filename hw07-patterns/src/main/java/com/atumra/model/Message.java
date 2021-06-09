@@ -1,8 +1,9 @@
 package com.atumra.model;
 
-import java.util.ArrayList;
+import lombok.Getter;
 
-public class Message {
+@Getter
+public class Message implements Cloneable {
     private final long id;
     private final String field1;
     private final String field2;
@@ -37,62 +38,6 @@ public class Message {
         this.field13 = field13;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public String getField1() {
-        return field1;
-    }
-
-    public String getField2() {
-        return field2;
-    }
-
-    public String getField3() {
-        return field3;
-    }
-
-    public String getField4() {
-        return field4;
-    }
-
-    public String getField5() {
-        return field5;
-    }
-
-    public String getField6() {
-        return field6;
-    }
-
-    public String getField7() {
-        return field7;
-    }
-
-    public String getField8() {
-        return field8;
-    }
-
-    public String getField9() {
-        return field9;
-    }
-
-    public String getField10() {
-        return field10;
-    }
-
-    public String getField11() {
-        return field11;
-    }
-
-    public String getField12() {
-        return field12;
-    }
-
-    public ObjectForMessage getField13() {
-        return field13;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -109,9 +54,7 @@ public class Message {
     }
 
     /**
-     * Метод создает копию объекта Message.
-     * Для поля field13 c типом ObjectForMessages создается полная копия,
-     * чтобы избежать его неконтролируемых изменений.
+     * Full copy of class and fields
      */
     @Override
     public Object clone() {

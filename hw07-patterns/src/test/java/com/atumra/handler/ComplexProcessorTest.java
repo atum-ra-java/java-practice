@@ -1,11 +1,11 @@
-package ru.otus.handler;
+package com.atumra.handler;
 
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.otus.model.Message;
-import ru.otus.listener.Listener;
-import ru.otus.processor.Processor;
+import com.atumra.model.Message;
+import com.atumra.listener.Listener;
+import com.atumra.processor.Processor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +96,11 @@ class ComplexProcessorTest {
     }
 
     private static class TestException extends RuntimeException {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
+
         public TestException(String message) {
             super(message);
         }

@@ -1,6 +1,6 @@
-package ru.otus.listener;
+package com.atumra.listener;
 
-import ru.otus.model.Message;
+import com.atumra.model.Message;
 
 public interface Listener {
 

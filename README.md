@@ -13,3 +13,6 @@
 ### HW-02. Generics
 ### HW-03. Reflection.
 
+
+### HW-07. Patterns.
+

@@ -1,18 +1,34 @@
-package ru.otus.listener.homework;
+package com.atumra.listener.homework;
 
-import ru.otus.listener.Listener;
-import ru.otus.model.Message;
+import com.atumra.listener.Listener;
+import com.atumra.model.Message;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class HistoryListener implements Listener, HistoryReader {
 
+    private List<Message> history;
+
+    public HistoryListener() {
+        history = new ArrayList<>();
+    }
+
     @Override
     public void onUpdated(Message msg) {
-        throw new UnsupportedOperationException();
+        history.add((Message)msg.clone());
+        // throw new UnsupportedOperationException();
     }
 
     @Override
     public Optional<Message> findMessageById(long id) {
-        throw new UnsupportedOperationException();
+        Optional<Message>  message = history.stream()
+        .filter(msg -> msg.getId() == id)
+        .findFirst();
+
+        return message;
+        // throw new UnsupportedOperationException();
+
     }
 }

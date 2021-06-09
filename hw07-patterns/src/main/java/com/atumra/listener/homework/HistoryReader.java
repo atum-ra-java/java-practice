@@ -1,6 +1,6 @@
-package ru.otus.listener.homework;
+package com.atumra.listener.homework;
 
-import ru.otus.model.Message;
+import com.atumra.model.Message;
 
 import java.util.Optional;
 

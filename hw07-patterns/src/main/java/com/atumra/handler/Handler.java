@@ -1,7 +1,7 @@
-package ru.otus.handler;
+package com.atumra.handler;
 
-import ru.otus.model.Message;
-import ru.otus.listener.Listener;
+import com.atumra.model.Message;
+import com.atumra.listener.Listener;
 
 public interface Handler {
     Message handle(Message msg);
