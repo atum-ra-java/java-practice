@@ -22,7 +22,7 @@ public class Demo {
         List<Processor> processors =  List.of(
             new ProcessorConcatFields(),
             new LoggerProcessor(new ProcessorUpperField10()),
-            (Processor) new ProcessorTimer(() -> LocalDateTime.of(2020, Month.JUNE, 11, 12, 10, 02))
+            new ProcessorTimer(() -> LocalDateTime.of(2020, Month.JUNE, 11, 12, 10, 2))
         );
 
         var complexProcessor = new ComplexProcessor(processors, ex -> {});

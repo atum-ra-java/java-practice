@@ -57,7 +57,7 @@ public class Message implements Cloneable {
      * Full copy of class and fields
      */
     @Override
-    public Object clone() {
+    public Message clone() {
         return toBuilder().field13((ObjectForMessage) field13.clone()).build();
     }
 

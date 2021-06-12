@@ -1,6 +1,7 @@
 package com.atumra.processor.homework;
 
 import com.atumra.model.Message;
+import com.atumra.processor.Processor;
 
 //todo: 2. Сделать процессор, который поменяет местами значения field11 и field12
 public class ProcessorSwitchFields implements Processor {

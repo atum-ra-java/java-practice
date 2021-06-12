@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import com.atumra.processor.homework.ProcessorTimer;
-import com.atumra.processor.homework.Processor;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +16,7 @@ public class ProcessorTimerTest {
   @DisplayName("EvenSecond")
   void processEvenSecond() {
       Processor processor = new ProcessorTimer(
-              () -> LocalDateTime.of(2020, Month.JUNE, 11, 12, 10, 02)
+              () -> LocalDateTime.of(2020, Month.JUNE, 11, 12, 10, 2)
       );
       assertThrows(IllegalStateException.class, () -> processor.process(null));
   }
@@ -26,7 +25,7 @@ public class ProcessorTimerTest {
   @DisplayName("OddSecond")
   void processOddSecond() {
       Processor processor = new ProcessorTimer(
-              () -> LocalDateTime.of(2021, Month.MAY, 30, 12, 10, 01)
+              () -> LocalDateTime.of(2021, Month.MAY, 30, 12, 10, 1)
       );
       assertDoesNotThrow(() -> processor.process(null));
   }

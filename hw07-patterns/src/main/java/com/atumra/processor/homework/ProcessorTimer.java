@@ -1,6 +1,7 @@
 package com.atumra.processor.homework;
 
 import com.atumra.model.Message;
+import com.atumra.processor.Processor;
 
 public class ProcessorTimer implements Processor {
 
