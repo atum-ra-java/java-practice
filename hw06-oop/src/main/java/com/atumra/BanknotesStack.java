@@ -7,7 +7,7 @@ import lombok.Getter;
 
 public class BanknotesStack {
 
-  @Getter
+
   private Map<BanknoteType,Integer>  banknotesInStack = new HashMap<>();
 
   public BanknotesStack() {
@@ -26,7 +26,7 @@ public class BanknotesStack {
 
     for (Map.Entry<BanknoteType,Integer> entry : banknotesInStack.entrySet()) {
       var sum = entry.getKey().getValue() * entry.getValue();
-      
+
       result.put(entry.getKey().getValue(), sum); 
     }
     return result;
