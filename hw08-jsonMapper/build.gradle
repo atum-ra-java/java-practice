@@ -1,0 +1,51 @@
+
+//no
+//cd folder and gradle -q dependencies :dependencies
+
+plugins {
+    //id 'java'
+    id 'java-library'
+    id "io.freefair.lombok" version "6.0.0-m2"
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+// added Java 8 property names + Jackson Module for them
+compileJava.options.compilerArgs.add '-parameters'
+compileTestJava.options.compilerArgs.add '-parameters'
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'javax.json:javax.json-api'
+    implementation group: 'com.fasterxml.jackson.module', name: 'jackson-module-parameter-names', version: '2.4.1'
+
+    implementation group: 'org.glassfish', name: 'javax.json', version: '1.1.4'
+
+
+    // implementation 'org.glassfish:javax.json'
+    testImplementation ('org.junit.jupiter:junit-jupiter-api')
+    testImplementation ('org.junit.jupiter:junit-jupiter-engine')
+    testImplementation ('org.junit.jupiter:junit-jupiter-params')
+    testImplementation ('org.assertj:assertj-core')
+    testImplementation ('org.mockito:mockito-core')
+    testImplementation ('org.mockito:mockito-junit-jupiter')
+}
+
+sourceSets.main.java.srcDirs = ['src/main/java']
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed"
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.with {
+        encoding = 'UTF-8'
+    }
+}
+
+

@@ -1,2 +1,2 @@
 rootProject.name = 'java.practice'
-include 'hw07-patterns'
+include 'hw08-jsonMapper'
