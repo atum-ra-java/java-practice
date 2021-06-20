@@ -17,12 +17,7 @@ public class ProcessorAggregator implements Processor {
         return new TreeMap<>(data.stream().collect(Collectors.groupingBy(
             Measurement::getName, Collectors.summingDouble(Measurement::getValue)
             )));
-        
 
-        
-    //     map((Measurement measure) -> {
-    //         measure.getName().equals("val1")
-    //     })
     //     //группирует выходящий список по name, при этом суммирует поля value
     //     return null;
     }

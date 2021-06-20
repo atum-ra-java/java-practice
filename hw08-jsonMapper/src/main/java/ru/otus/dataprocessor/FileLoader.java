@@ -27,7 +27,6 @@ public class FileLoader implements Loader {
         var file = new File(fileName);
         List<Measurement> loadedMeasures = mapper.readValue(file,
             mapper.getTypeFactory().constructCollectionType(List.class, Measurement.class));
-        System.out.println("measures loaded from the file:" + file.getAbsolutePath() + ", loadedMeasures:" + loadedMeasures.size());
 
         return loadedMeasures;
     }
