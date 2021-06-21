@@ -6,13 +6,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.extern.jackson.Jacksonized;
 
 //Допустим, этот класс библиотечный, его нельзя менять
-// @Jacksonized
+
 public class Measurement {
 
     private final String name;
 
     private final double value;
-    @JsonCreator
+ 
     public Measurement( String name, double value) {
         this.name = name;
         this.value = value;

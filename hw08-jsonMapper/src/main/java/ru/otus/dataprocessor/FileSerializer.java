@@ -12,6 +12,8 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonWriter;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import lombok.SneakyThrows;
 
 public class FileSerializer implements Serializer {
@@ -24,13 +26,19 @@ public class FileSerializer implements Serializer {
 @SneakyThrows
     @Override
     public void serialize(Map<String, Double> data)  {
-        var json = new StringBuilder("{");
-        data.forEach((key, value) -> {
-            json.append("\"" + key + "\":" + value + ",");
-        });
-        json.deleteCharAt(json.length()-1).append("}");
+        // var json = new StringBuilder("{");
+        // data.forEach((key, value) -> {
+        //     json.append("\"" + key + "\":" + value + ",");
+        // });
+        // json.deleteCharAt(json.length()-1).append("}");
   
-        Files.write(Paths.get(fileName), json.toString().getBytes());
+        // Files.write(Paths.get(fileName), json.toString().getBytes());
         //формирует результирующий json и сохраняет его в файл
+
+        ObjectMapper objectMapper = new ObjectMapper();
+      
+        var output = objectMapper.writeValueAsString(data);
+        Files.write(Paths.get(fileName), output.getBytes());
+
     }
 }

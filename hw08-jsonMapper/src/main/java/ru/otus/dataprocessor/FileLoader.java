@@ -3,6 +3,7 @@ package ru.otus.dataprocessor;
 import ru.otus.model.Measurement;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,8 +24,9 @@ public class FileLoader implements Loader {
     @Override
     public List<Measurement> load() {
         // читает файл, парсит и возвращает результат
-
-        var file = new File(fileName);
+        var path = ClassLoader.getSystemResource(fileName).getFile();
+        var file = new File(path);
+        System.out.println(file);
         List<Measurement> loadedMeasures = mapper.readValue(file,
             mapper.getTypeFactory().constructCollectionType(List.class, Measurement.class));
 
